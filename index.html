@@ -96,7 +96,7 @@
            
 
             // 메뉴 휠 이벤트
-            $(window).on('mousewheel',function(){
+            $(window).on('mousewheel touchmove',function(){
                 var a=$(location).attr('href');
                 var b='welcome';
                 
@@ -107,16 +107,17 @@
                 }
             })
             
-            $(window).on('touchmove',function(){
-                var a=$(location).attr('href');
-                var b='welcome';
+            // // 모바일 터치 휠
+            // $(window).on('touchmove',function(){
+            //     var a=$(location).attr('href');
+            //     var b='welcome';
                 
-                if(a.indexOf(b)>=0){
-                    $('.header').removeClass('active');
-                }else{
-                    $('.header').addClass('active');
-                }
-            })
+            //     if(a.indexOf(b)>=0){
+            //         $('.header').removeClass('active');
+            //     }else{
+            //         $('.header').addClass('active');
+            //     }
+            // })
 
             
 
