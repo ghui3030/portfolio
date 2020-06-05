@@ -106,7 +106,8 @@
                     $('.header').addClass('active');
                 }
             })
-            $(window).on('mousedragged',function(){
+            
+            $(window).on('touchmove',function(){
                 var a=$(location).attr('href');
                 var b='welcome';
                 
@@ -116,6 +117,8 @@
                     $('.header').addClass('active');
                 }
             })
+
+            
 
             // 메뉴 클릭 이벤트
             $('.header a').click(function(){
