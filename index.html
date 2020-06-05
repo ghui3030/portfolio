@@ -93,11 +93,20 @@
                 $('.grid_hover_bg').css('opacity','0')
             })
             
-
            
 
             // 메뉴 휠 이벤트
             $(window).on('mousewheel',function(){
+                var a=$(location).attr('href');
+                var b='welcome';
+                
+                if(a.indexOf(b)>=0){
+                    $('.header').removeClass('active');
+                }else{
+                    $('.header').addClass('active');
+                }
+            })
+            $(window).on('mousedragged',function(){
                 var a=$(location).attr('href');
                 var b='welcome';
                 
