@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
     <script type="text/javascript" src="js/jquery_fullPage.js"></script>
     <script src="js/portfolio_fullpage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     
 
     <!-- swiper -->
@@ -107,18 +108,6 @@
                 }
             })
             
-            // // 모바일 터치 휠
-            // $(window).on('touchmove',function(){
-            //     var a=$(location).attr('href');
-            //     var b='welcome';
-                
-            //     if(a.indexOf(b)>=0){
-            //         $('.header').removeClass('active');
-            //     }else{
-            //         $('.header').addClass('active');
-            //     }
-            // })
-
             
 
             // 메뉴 클릭 이벤트
@@ -170,6 +159,9 @@
         .box_line h3{margin-bottom: 10px;font-size: 20px;}
         .box_line p{border: 1px solid #f5f5f7;width: 90px;height: 25px;line-height: 25px;font-size: 15px;}
 
+        
+
+
         /* 나는 */
         .about_me{display: flex;justify-content: space-around;}
         .face{width: 200px;height: 200px;position: relative;}
@@ -190,6 +182,39 @@
 
         .welcome p{color: #333;text-align: center;text-shadow: 1px 1px 1px gray;}
     </style>
+    <!-- [if lte IE 8]>
+    <style>
+        /* ie 그리드 */
+        .grid_par>li>div>a{position: absolute;top: 0;left: 0;}
+        .grid_par li:nth-child(2)>div{height:106%;width: 50%;}
+        .portfolio .grid_par{display:-ms-grid;-ms-grid-columns: 11% 12% 12% 11% 12% 11% 11% 12% 12%;}
+        .grid{padding-right: 11%;}
+        .grid_child01{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:1;}
+        .grid_child02{-ms-grid-column:4;-ms-grid-column-span:6;-ms-grid-row:1;-ms-grid-row-span: 2;}
+        .grid_child03{-ms-grid-column:7;-ms-grid-column-span:9;-ms-grid-row:1;}
+        .grid_child04{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:2;margin-top: 11%;}
+        .grid_child05{-ms-grid-column:7;-ms-grid-column-span:9;-ms-grid-row:2;margin-top: 11%;}
+        .grid_child03 img{width: 90%;height: 40%;}
+        .grid_child05 img{width: 90%;height: 40%;}
+        .grid_par li:nth-child(2) .box_line{height: 600px;}
+    </style>
+    <![endif] -->
+    <!-- <style>
+        /* ie 그리드 */
+        .grid_par>li>div>a{position: absolute;top: 0;left: 0;}
+        .grid_par li:nth-child(2)>div{height:105.7%;width: 50%;}
+        .portfolio .grid_par{display:-ms-grid;-ms-grid-columns: 11% 12% 12% 11% 12% 11% 11% 12% 12%;}
+        .grid{padding-right: 11%;}
+        .grid_child01{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:1;}
+        .grid_child02{-ms-grid-column:4;-ms-grid-column-span:6;-ms-grid-row:1;-ms-grid-row-span: 2;}
+        .grid_child03{-ms-grid-column:7;-ms-grid-column-span:9;-ms-grid-row:1;}
+        .grid_child04{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:2;margin-top: 11%;}
+        .grid_child05{-ms-grid-column:7;-ms-grid-column-span:9;-ms-grid-row:2;margin-top: 11%;}
+        .grid_child03 img{width: 90%;height: 40%;}
+        .grid_child05 img{width: 90%;height: 40%;}
+        .grid_par li:nth-child(2) .box_line{height: 600px;}
+    </style> -->
+    
 </head>
 <body>
     <ul class="skip_menu">
