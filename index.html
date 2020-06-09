@@ -48,13 +48,12 @@
     <link rel="stylesheet" href="css/skip.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/dog.css">
+    
     <script>
         $(function(){
-           
-            // 네비
-            navMenu();
 
-            // // 스타트 스킵 메뉴 이벤트
+            // 스타트 스킵 메뉴 이벤트
+
             $('.skip_menu>li>a').focus(function(){
                 $(this).parent().css('top',0);
 
@@ -64,100 +63,89 @@
 
             });
 
-            // 스타트 버거메뉴이벤트
+            // 네비 이벤트
+
             $('#open_nav_btn').click(function(){
-                $('.nav>ul').css('display','block');
-            });
-            // 크로스 버튼 이벤트
+                navBlock()
+            })
             $('#close_nav_btn').click(function(){
-                $('.nav>ul').hide();
-            });
-            var winWidth=$(window).width();
-            // 스타트 리사이즈 이벤트
+                navNone()
+            })
             $(window).resize(function(){
-                navMenu();
-            });
-
-            function navMenu(){
-                var winWidth=$(window).width();
-                if(winWidth>=768){
-                    $('.nav>ul').css('display','flex');
-                    $('#open_nav_btn').hide();
+                var winWidth=$(this).width();
+                if(winWidth>=767){
+                    navFlex()
                 }else{
-                    $('.nav>ul').hide();
-                    $('#open_nav_btn').show();
+                    navNone()
                 }
-            };
+            })
 
-            $('.grid').hover(function(){
-                $(this).children().children('.grid_hover_bg').css('opacity','1')
-            },function(){
-                $('.grid_hover_bg').css('opacity','0')
-            });
-            
-           
+            function navFlex(){
+                $('nav>ul').css('display','flex');
+            }
+            function navNone(){
+                $('nav>ul').css('display','none');
+            }
+            function navBlock(){
+                $('nav>ul').css('display','block');
+            }
 
             // 메뉴 휠 이벤트
+
             $(window).on('mousewheel touchmove',function(){
                 var a=$(location).attr('href');
                 var b='welcome';
-                
+                var c='i_am';
+
                 if(a.indexOf(b)>=0){
                     $('.header').removeClass('active');
                 }else{
                     $('.header').addClass('active');
                 }
-            });
-            $(window).on('mousewheel touchmove',function(){
-                var a=$(location).attr('href');
-                var b='i_am';
-                if(a.indexOf(b)>=0){
-                    for(let i=0;i<=4;i++){
-                        setTimeout(()=>{
-                            $('.skill>li').eq(i).addClass('active');
-                        },i*1000)
-                    }
+
+                if(a.indexOf(c)>=0){
+                    $('.skill>li').addClass('active');
                 }
             });
             
+            
 
             // 메뉴 클릭 이벤트
+
             $('.header a').click(function(){
                 var navTxt=$(this).text();
                 var headerBox=$('.header');
                 if(navTxt=='Welcome'){
-                    headerBox.addClass('active');
+                    headerBox.removeClass('active');
                 }else{
                     headerBox.addClass('active');
                 }
-                for(let i=0;i<=4;i++){
-                   setTimeout(()=>{
-                       $('.skill>li').eq(i).addClass('active');
-                   },i*1000)
-                }
+                if(navTxt=='About Me'){
+                    $('.skill>li').addClass('active');
+                }  
             });
-          
-            
 
+            // welcome 텍스트 이벤트
             $('.welcome').mousemove(function(e){
                 var rXP = (e.pageX - this.offsetLeft-$(this).width()/2);
                 var rYP = (e.pageY - this.offsetTop-$(this).height()/2);
                 $('.text').css('text-shadow', +rYP/10+'px '+rXP/80+'px rgba(227,6,19,.8), '+rYP/8+'px '+rXP/60+'px rgba(255,237,0,1), '+rXP/70+'px '+rYP/12+'px rgba(0,159,227,.7)');
             });
-           
+
+            // 그리드 이벤트
+            $('.grid').hover(function(){
+                $(this).children().children('.grid_hover_bg').css('opacity','1')
+            },function(){
+                $('.grid_hover_bg').css('opacity','0')
+            });
 
         })
     </script>
     <style>
         .welcome{background-image: url(images/welcome_bg.jpg);background-size: cover;}
-        /* #welcome p{position: absolute;top: 50%;transform:translateY(-50%)} */
-        .tel{background-color: #343148;}
+        .tel{background-color: orange;}
         .section{box-sizing: border-box;}
         .temp{font-size: 100px;text-align: center;}
-
-        .swiper-slide{width: 400px;}
-        .swiper-slide img{width: 100%;border-radius: 10px;}
-
 
         
         /* welcome */
@@ -182,11 +170,11 @@
         .progress>span{position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#cccccc;font-weight:bold;}
         .progress::before{content:'';width: 0; display:block;height:100%;background-color:red;transition:0.3s;}
         
-        .skill>li.active:nth-child(1) .progress::before{width:90%;}
-        .skill>li.active:nth-child(2) .progress::before{width:90%;}
-        .skill>li.active:nth-child(3) .progress::before{width:70%;}
-        .skill>li.active:nth-child(4) .progress::before{width:90%;}
-        .skill>li.active:nth-child(5) .progress::before{width:70%;}
+        .skill>li.active:nth-child(1) .progress::before{width:90%;transition-delay:1s;}
+        .skill>li.active:nth-child(2) .progress::before{width:90%;transition-delay:2s;}
+        .skill>li.active:nth-child(3) .progress::before{width:70%;transition-delay:3s;}
+        .skill>li.active:nth-child(4) .progress::before{width:90%;transition-delay:4s;}
+        .skill>li.active:nth-child(5) .progress::before{width:70%;transition-delay:5s;}
         .skill>li:hover::after{content:'';display:block;width:0;height:0;}
 
 
@@ -285,18 +273,13 @@
                             <img src="images/myface.jpg" alt="myface">
                         </div>
                         <h2>SONG JU HWAN</h2>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
                     </li>
                     <li>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
-                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>
+                            1994년 6월 7일생, 서울에 거주중인 웹디자이너/퍼블리셔 송주환입니다.<br>
+                            Abode Photoshop, Illustrator를 이용해 디자인하며,<br>
+                            HTML5, CSS3, JavaScript, Jquery를 이용하여 웹페이지 코딩을 합니다.
+                        </p>
                     </li>
                 </ul>
                 <div class="title">
@@ -421,20 +404,22 @@
                     <div class="head">
                         <div class="year year--left"></div>
                         <div class="year year--right"></div>
-                        <div class="nose"></div>	
+                        <div class="nose--back"></div>
+                        <div class="nose">
+                            <div class="mouth"></div>
+                        </div>	
                         <div class="face">
                             <div class="eye eye--left"></div>
                             <div class="eye eye--right"></div>
-                            <div class="mouth"></div>
                         </div>
                     </div>
                     <div class="body">
-                        <div class="cheast"></div>
+                        <div class="chest chest--left"></div>
+                        <div class="chest chest--right"></div>
                         <div class="back"></div>
                         <div class="legs">
                             <div class="legs__front legs__front--left"></div>
                             <div class="legs__front legs__front--right"></div>
-                            <div class="legs__back legs__back--left"></div>
                             <div class="legs__back legs__back--right"></div>
                         </div>
                         <div class="tail"></div>
