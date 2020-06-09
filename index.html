@@ -1,338 +1,470 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 제작자 -->
-  <meta name="author" content="hong">
-  <!-- 설명 -->
-  <meta name="description" content="Web portfolio">
-  <!-- 키워드 -->
-  <meta name="keywords" content="포트폴리오, portfolio, 웹, web, 취업">
-  <!-- 링크공유 -->
-  <meta property="og:url" content="https://pam7462.github.io/portfolio/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="portfolio">
-  <meta property="og:image" content="images/portfolio.png">
-  <meta property="og:description" content="홍길동의 portfolio">
-  <!-- 익스플로러 -->
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <!-- 주석조건문 -->
-  <!-- [if lte IE 8]>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 제작자 -->
+    <meta name="author" content="song">
+    <!-- 설명 -->
+    <meta name="description" content="송주환의 2020 포트폴리오">
+    <!-- 키워드 -->
+    <meta name="keywords" content="포트폴리오,portfolio,web portfolio,web,웹">
+    <!-- 링크공유 -->
+    <meta property="og:url" content="https://ghui3030.github.io/portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="portfolio">
+    <meta property="og:image" content="images/portfolio_img.png">
+    <meta property="og:description" content="송주환의 2020 포트폴리오">
+    <!-- 익스플로러 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>송주환의 포트폴리오</title>
+    
+    <!-- 주석조건문 -->
+    
+    <!-- [if lte IE 8]>
+    <script src="js/html5shiv.js"></script>
     <script src="js/html5shiv.min.js"></script>
+    <script src="js/placeholders.js"></script>
     <script src="js/placeholders.min.js"></script>
-  <![endif] -->
-  
-  <title>홍길동의 포트폴리오</title>
-  <!-- jQuery -->
-  <script src="js/jquery-3.5.0.min.js"></script>
+    <![endif] -->
 
-  <!-- swiper-slider -->
-  <link rel="stylesheet" href="css/swiper.css">
-  <script src="js/swiper.js"></script>
-  <script src="js/slider_port.js"></script>
+    <!-- jquery -->
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <!-- fullpage -->   
+    <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+    <script type="text/javascript" src="js/jquery_fullPage.js"></script>
+    <script src="js/portfolio_fullpage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    
 
-  
-  <!-- 사용자 스타일 -->
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/skip.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/section.css">
-  <link rel="stylesheet" href="css/welcome.css">
-  <link rel="stylesheet" href="css/i_am.css">
-  <link rel="stylesheet" href="css/skill.css">
-  <link rel="stylesheet" href="css/portfolio.css">
-  <link rel="stylesheet" href="css/tel.css">
-  <link rel="stylesheet" href="css/footer.css">
+    <!-- swiper -->
+    <!-- <link rel="stylesheet" href="css/swiper.min.css"> -->
+    <!-- <script src="js/swiper.min.js"></script> -->
+    <!-- <script src="js/slider_port.js"></script> -->
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/skip.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/dog.css">
+    <script>
+        $(function(){
+           
+            // 네비
+            navMenu();
 
-  <!-- 사용자 JS -->
-  <script src="js/skip.js"></script>
-  <script src="js/header_footer.js"></script>
-  <script src="js/portfolio.js"></script>
+            // // 스타트 스킵 메뉴 이벤트
+            $('.skip_menu>li>a').focus(function(){
+                $(this).parent().css('top',0);
 
+            });
+            $('.skip_menu>li>a').focusout(function(){
+                $(this).parent().css('top','-100%');
+
+            });
+
+            // 스타트 버거메뉴이벤트
+            $('#open_nav_btn').click(function(){
+                $('.nav>ul').css('display','block');
+            });
+            // 크로스 버튼 이벤트
+            $('#close_nav_btn').click(function(){
+                $('.nav>ul').hide();
+            });
+            var winWidth=$(window).width();
+            // 스타트 리사이즈 이벤트
+            $(window).resize(function(){
+                navMenu();
+            });
+
+            function navMenu(){
+                var winWidth=$(window).width();
+                if(winWidth>=768){
+                    $('.nav>ul').css('display','flex');
+                    $('#open_nav_btn').hide();
+                }else{
+                    $('.nav>ul').hide();
+                    $('#open_nav_btn').show();
+                }
+            };
+
+            $('.grid').hover(function(){
+                $(this).children().children('.grid_hover_bg').css('opacity','1')
+            },function(){
+                $('.grid_hover_bg').css('opacity','0')
+            });
+            
+           
+
+            // 메뉴 휠 이벤트
+            $(window).on('mousewheel touchmove',function(){
+                var a=$(location).attr('href');
+                var b='welcome';
+                
+                if(a.indexOf(b)>=0){
+                    $('.header').removeClass('active');
+                }else{
+                    $('.header').addClass('active');
+                }
+            });
+            $(window).on('mousewheel touchmove',function(){
+                var a=$(location).attr('href');
+                var b='i_am';
+                if(a.indexOf(b)>=0){
+                    for(let i=0;i<=4;i++){
+                        setTimeout(()=>{
+                            $('.skill>li').eq(i).addClass('active');
+                        },i*1000)
+                    }
+                }
+            });
+            
+
+            // 메뉴 클릭 이벤트
+            $('.header a').click(function(){
+                var navTxt=$(this).text();
+                var headerBox=$('.header');
+                if(navTxt=='Welcome'){
+                    headerBox.addClass('active');
+                }else{
+                    headerBox.addClass('active');
+                }
+                for(let i=0;i<=4;i++){
+                   setTimeout(()=>{
+                       $('.skill>li').eq(i).addClass('active');
+                   },i*1000)
+                }
+            });
+          
+            
+
+            $('.welcome').mousemove(function(e){
+                var rXP = (e.pageX - this.offsetLeft-$(this).width()/2);
+                var rYP = (e.pageY - this.offsetTop-$(this).height()/2);
+                $('.text').css('text-shadow', +rYP/10+'px '+rXP/80+'px rgba(227,6,19,.8), '+rYP/8+'px '+rXP/60+'px rgba(255,237,0,1), '+rXP/70+'px '+rYP/12+'px rgba(0,159,227,.7)');
+            });
+           
+
+        })
+    </script>
+    <style>
+        .welcome{background-image: url(images/welcome_bg.jpg);background-size: cover;}
+        /* #welcome p{position: absolute;top: 50%;transform:translateY(-50%)} */
+        .tel{background-color: #343148;}
+        .section{box-sizing: border-box;}
+        .temp{font-size: 100px;text-align: center;}
+
+        .swiper-slide{width: 400px;}
+        .swiper-slide img{width: 100%;border-radius: 10px;}
+
+
+        
+        /* welcome */
+        .text{-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select: none;font-weight: bolder;}
+        .mouse_ani{height: 60px;position: relative;}
+        .mouse_ani>img{height: 100%; position: absolute;left: 50%;transform: translateX(-50%);animation: mmove 2s infinite ease-in-out;}
+        @keyframes mmove{0%{top:80px;}40%{top: 100px;}60%{top: 100px;}100%{top:80px;}}
+        .welcome p{color: #eee;text-align: center;text-shadow: 1px 1px 1px #333;font-size: 18px;line-height: 50px;}
+
+        /* 나는 */
+        .about_me{display: flex;justify-content: space-around;}
+        .my_face{width: 200px;height: 200px;position: relative;}
+        .my_face::before{position: absolute;right: -10px;top: -10px; box-sizing: border-box; content: '';display:block;width: 100%;height: 100%;border: 2px solid #333;}
+        .my_face>img{width: 100%;height: 100%;}
+        .skill{display: flex;justify-content: center;align-items: flex-start;flex-flow: row nowrap;}
+        .skill>li{width: 100%; text-align: center;display: flex;flex-flow: column nowrap;align-items: center;justify-content: center;}
+        .skill>li>img{width: 50%;height: 50%;}
+        .skill>li>p{width: 90%;}
+        
+        
+        .progress{width: 90%; max-width:260px;height:20px;background-color:#cccccc;position: relative;margin: 15px 0;}
+        .progress>span{position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#cccccc;font-weight:bold;}
+        .progress::before{content:'';width: 0; display:block;height:100%;background-color:red;transition:0.3s;}
+        
+        .skill>li.active:nth-child(1) .progress::before{width:90%;}
+        .skill>li.active:nth-child(2) .progress::before{width:90%;}
+        .skill>li.active:nth-child(3) .progress::before{width:70%;}
+        .skill>li.active:nth-child(4) .progress::before{width:90%;}
+        .skill>li.active:nth-child(5) .progress::before{width:70%;}
+        .skill>li:hover::after{content:'';display:block;width:0;height:0;}
+
+
+        /* 프로젝트 포트폴리오 */
+        .title{text-align: center;margin-bottom: 30px;}
+        .title h2{color: #dd4132;font-size: 55px;}
+        .title p{font-size: 13px;}
+        .portfolio .grid_par{display: grid;grid-template-columns: auto auto auto auto auto auto auto auto auto;grid-gap: 12px;}
+        .grid_par>li>div{position: relative;height:300px;background-color:rgba(0, 0, 0, 0.1);cursor:pointer;display:flex;justify-content:center;align-items:center;}
+        .grid_par li:nth-child(2)>div{height:100%;}
+        .grid_par img{width:90%;}
+        .grid_child01{grid-column:1/4;}
+        .grid_child02{grid-area:1/4/3/7;}
+        .grid_child03{grid-column:7/10;}
+        .grid_child04{grid-column:1/4;}
+        .grid_child05{grid-column:7/10;}
+        .grid_hover_bg{background-color:rgba(110, 0, 0, 0.5);text-align:center;position: absolute; width: 100%;height: 100%;transition: 0.5s;opacity: 0;}
+        .grid_par li:nth-child(2) .box_line{height: 576px;}
+        .box_line{display:flex;flex-flow:column nowrap;justify-content: center;align-items: center; color: #f5f5f7;border: 2px solid #f5f5f7;margin: 5%;height: 264px;}
+        .box_line h3{margin-bottom: 10px;font-size: 20px;}
+        .box_line p{border: 1px solid #f5f5f7;width: 90px;height: 25px;line-height: 25px;font-size: 15px;}
+
+        @media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        /* ie 그리드 */
+        .grid_par>li>div>a{position: absolute;top: 0;left: 0;}
+        .grid_par li:nth-child(2)>div{height:106%;width: 50%;}
+        .portfolio .grid_par{display:-ms-grid;-ms-grid-columns: 11% 12% 12% 11% 12% 11% 11% 12% 12%;}
+        .grid{padding-right: 11%;}
+        .grid_child01{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:1;}
+        .grid_child02{-ms-grid-column:4;-ms-grid-column-span:6;-ms-grid-row:1;-ms-grid-row-span: 2;}
+        .grid_child03{-ms-grid-column:7;-ms-grid-column-span:9;-ms-grid-row:1;}
+        .grid_child04{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:2;margin-top: 11%;}
+        .grid_child05{-ms-grid-column:7;-ms-grid-column-span:9;-ms-grid-row:2;margin-top: 11%;}
+        .grid_child03 img{width: 90%;height: 40%;}
+        .grid_child05 img{width: 90%;height: 40%;}
+        .grid_par li:nth-child(2) .box_line{height: 600px;}
+        }
+
+
+        /* 컨텍 */
+        .tel_text{text-align: center;}
+        .tel_text>h3{font-size: 90px;}
+        
+
+        .end{width: 100%;height: 150px;background-color: #dd4132;position: absolute; bottom: 0px;text-align: center;display: flex;align-items: center;}
+        .end>.content{display: flex;flex-flow:row nowrap;justify-content: space-between;}
+        .end>.content>div:nth-child(2){display: flex;}
+        .end>.content img{width: 50px;}
+    </style>
 </head>
 <body>
-  <ul class="skip_menu">
-    <li><a href="#welcome">어서오세요</a></li>
-    <li><a href="#i_am">나는 누구인가?</a></li>
-    <li><a href="#skill">기술</a></li>
-    <li><a href="#portfolio">작품집</a></li>
-    <li><a href="#tel">연락주세요</a></li>
-  </ul>
-  <div class="wrap">
-    <header class="header">
-      <div class="content">
-        <div class="logo">
-          <h1>
-            <a href="index.html">PortFolio</a>
-          </h1>
+    <ul class="skip_menu">
+        <li><a href="#welcome">Welcome</a></li>
+        <li><a href="#i_am">About Me</a></li>
+        <li><a href="#portfolio">Project</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <header class="header" id="menu">
+        <div class="content">
+            <div class="logo">
+                <h1><a href="index.html">PortFolio</a></h1>
+            </div>
+            <nav class="nav">
+                <p id="open_nav_btn">&#9776;</p>
+                <ul>
+                    <li><div id="close_nav_btn">&#10005;</div></li>
+                    <li><a href="#welcome">Welcome</a></li>
+                    <li><a href="#i_am">About Me</a></li>
+                    <li><a href="#portfolio">Project</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="nav">
-          <p id="open_nav_btn">&#x2630;</p>
-          <ul>
-            <li id="close_nav_btn">&#x2715;</li>            
-            <li><a href="#welcome">Welcome</a></li>
-            <li><a href="#i_am">About Me</a></li>
-            <li><a href="#skill">Skill</a></li>
-            <li><a href="#portfolio">PortFolio</a></li>
-            <li><a href="#tel">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
     </header>
-    <section class="section" id="welcome">
-      <div class="content">
-        <video autoplay loop muted poster="media/ocean.jpg">
-          <!-- <source src="media/ocean.ogv">
-          <source src="media/ocean.webm">
-          <source src="media/ocean.mp4"> -->
-          <source src="media/cats.mp4">
-        </video>
-        <div class="btn_box">
-          <a href="#portfolio"><input type="button" value="Portfolio"></a>
-          <a href="https://github.com/pam7462" target="_blank"><input type="button" value="GitHub"></a>
+    <div id="fullpage">
+        <div class="section welcome" id="section0">
+            <div class="content">
+                <h2 class="temp text">Welcome</h2>
+                <p>PORTFOLIO</p>
+                <p>웹 포트폴리오 사이트입니다. 방문해 주셔서 감사합니다.</p>
+                <p>몰라 귀찮아</p>
+                <div class="mouse_ani">
+                    <img src="images/mouse.png" alt="mouse">
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-    <section class="section" id="i_am">
-      <div class="content">
-        <h2>ABOUT ME</h2>
-        <p>안녕하세요 신입 디자이너 홍길동입니다.</p>
-        <ul class="section_list about_list">
-          <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <div class="img_box">
-              !
+        <div class="section i_am" id="section1">
+            <div class="content">
+                <div class="title">
+                    <h2>About Me</h2>
+                    <p>Web-page design & publising</p>
+                </div>
+                <ul class="about_me">
+                    <li>
+                        <div class="my_face">
+                            <img src="images/myface.jpg" alt="myface">
+                        </div>
+                        <h2>SONG JU HWAN</h2>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                    </li>
+                    <li>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                        <p>1994년 6월7일 서울에 거주하는 ----</p>
+                    </li>
+                </ul>
+                <div class="title">
+                        <h2>SKILL</h2>
+                        <p>Web-page design & publising</p>
+                </div>
+                <ul class="skill">
+                    <li>
+                        <img src="images/html5.png" alt="html5">
+                        <div class="progress progress01">
+                            <span>90%</span>
+                        </div>
+                        <p>웹 표준 준수 및 효율적인 구조를 최우선적인 목표로 가지며 크로스 브라우징 이슈에 대해 인지하고 있습니다.</p>
+                    </li>
+                    <li>
+                        <img src="images/css.png" alt="css3">
+                        <div class="progress progress01">
+                            <span>90%</span>
+                        </div>
+                        <p>Animate와 transform을 활용하며 브라우저 크기에 대응하는 미디어쿼리 사용이 가능합니다.</p>
+                    </li>
+                    <li>
+                        <img src="images/js.png" alt="js">
+                        <div class="progress progress01">
+                            <span>70%</span>
+                        </div>
+                        <p>Jqurey plug-in 사용 및 직접 구현이 가능하고 javascript에 대한 이해도가 높습니다.</p>
+                    </li>
+                    <li>
+                        <img src="images/ps.png" alt="ps">
+                        <div class="progress progress01">
+                            <span>90%</span>
+                        </div>
+                        <p>합성, 사진 편집 등의 2D 그래픽 작업을 비롯한 다양한 웹 시안 작업이 가능합니다. </p>
+                    </li>
+                    <li>
+                        <img src="images/illu.png" alt="illu">
+                        <div class="progress progress01">
+                            <span>70%</span>
+                        </div>
+                        <p>아이콘 제작 등 벡터 소스의 자유로운 제작과 편집이 가능합니다.</p>
+                    </li>
+                </ul>
             </div>
-            <h3>나1</h3>
-            <p>나는 어떤사람이다1</p>
-          </li>
-          <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <div class="img_box">
-              ?
-            </div>
-            <h3>나2</h3>
-            <p>나는 어떤사람이다2</p>
-          </li>
-          <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <div class="img_box">
-              #
-            </div>
-            <h3>나3</h3>
-            <p>나는 어떤사람이다3</p>
-          </li>
-          <li>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <div class="img_box">
-              $
-            </div>
-            <h3>나4</h3>
-            <p>나는 어떤사람이다4</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="section" id="skill">
-      <div class="content">
-        <h2>SKILL</h2>
-        <p>안녕하세요 신입 디자이너 홍길동입니다.</p>
-        <ul class="section_list skill_list">
-          <li>
-            <div class="img_box">
-              <img src="images/html5.png" alt="html">
-            </div>
-            <h3>HTML5</h3>
-            <div class="progress progress01">
-              <span>100%</span>
-            </div>
-          </li>
-          <li>
-            <div class="img_box">
-              <img src="images/css3.webp" alt="css">
-            </div>
-            <h3>CSS3</h3>
-            <div class="progress progress02">
-              <span>90%</span>
-            </div>
-          </li>
-          <li>
-            <div class="img_box">
-              <img src="images/js.png" alt="js">
-            </div>
-            <h3>jS</h3>
-            <div class="progress progress03">
-              <span>70%</span>
-            </div>
-          </li>
-          <li>
-            <div class="img_box">
-              <img src="images/ps.png" alt="ps">
-            </div>
-            <h3>PhotoShop</h3>
-            <div class="progress progress04">
-              <span>95%</span>
-            </div>
-          </li>
-          <li>
-            <div class="img_box">
-              <img src="images/illu.png" alt="illustrator">
-            </div>
-            <h3>Illustrator</h3>
-            <div class="progress progress05">
-              <span>70%</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="section" id="portfolio">
-      <div class="content">
-        <h2>PortFolio</h2>
-        <p>안녕하세요 신입 디자이너 홍길동입니다.</p>
-        <div class="swiper-container">
-          <ul class="swiper-wrapper">
-            <li class="swiper-slide kia">
-              <div class="slide_img">
-                <img src="images/kia.png" alt="kia">
-              </div>
-              <div class="slide_txt">
-                <h3>기아자동차<span>리뉴얼</span></h3>
-                <p>HTML,CSS,jS,반응형</p>
-              </div>
-            </li>
-            <li class="swiper-slide iwc">
-              <div class="slide_img">
-                <img src="images/iwc.png" alt="iwc">
-              </div>
-              <div class="slide_txt">
-                <h3>IWC<span>리뉴얼</span></h3>
-                <p>HTML,CSS,jS,반응형</p>
-              </div>
-            </li>
-            <li class="swiper-slide tour">
-              <div class="slide_img">
-                <img src="images/tour.png" alt="tour">
-              </div>
-              <div class="slide_txt">
-                <h3>투어리스트</h3>
-                <p>HTML,CSS,jS,반응형</p>
-              </div>
-            </li>
-            <li class="swiper-slide megabox">
-              <div class="slide_img">
-                <img src="images/megabox.png" alt="megabox">
-              </div>
-              <div class="slide_txt">
-                <h3>매가박스<span>리뉴얼</span></h3>
-                <p>HTML,CSS,jS</p>
-              </div>
-            </li>
-            <li class="swiper-slide kakao">
-              <div class="slide_img last-img">
-                <img src="images/kakao.png" alt="kakao">
-              </div>
-              <div class="slide_txt">
-                <h3>카카오<span>리뉴얼</span></h3>
-                <p>HTML,CSS,jS</p>
-              </div>
-            </li>
-          </ul>
         </div>
-      </div>
-    </section>
-    <section class="section" id="tel">
-      <div class="content">
-        <h2>Contact</h2>
-        <p>안녕하세요 신입 디자이너 홍길동입니다.</p>
-        <div class="container clearfix">
-          <div class="contact_img">
-            <img src="images/face.jpg" alt="face">
-          </div>
-          <div class="contact_txt">
-            <p>email : pam<span>7461</span>@hanmail.net</p>
-            <p>phome : <span>010-8718-9995</span></p>
-            <p>address : <span>경기도 부천 어디쯤</span></p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d791.4722811576098!2d126.81202085395162!3d37.486942742750585!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1591236035555!5m2!1sko!2skr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-          </div>
+        <div class="section portfolio" id="section2">
+            <div class="content">
+                <div class="title">
+                    <h2>Project</h2>
+                    <p>Web-page design & publising</p>
+                </div>
+                <ul class="grid_par">
+                    <li class="grid_child01 grid">
+                        <div>
+                            <img src="images/portfolio_iwc.png" alt="iwc">
+                            <a href="#" class="grid_hover_bg">
+                                <div class="box_line">
+                                    <h3>IWC 샤프하우젠</h3>
+                                    <p>자세히보기</p>
+                                </div>
+                            </a> 
+                        </div>
+                    </li>
+                    <li class="grid_child02 grid">
+                        <div>
+                            <img src="images/portfolio_kia.png" alt="kia">
+                            <a href="#" class="grid_hover_bg">
+                                <div class="box_line">
+                                    <h3>기아 자동차</h3>
+                                    <p>자세히보기</p>
+                                </div>
+                            </a> 
+                        </div>
+                    </li>
+                    <li class="grid_child03 grid">
+                        <div>
+                            <img src="images/portfolio_megabox.png" alt="megabox">
+                            <a href="#" class="grid_hover_bg">
+                                <div class="box_line">
+                                    <h3>메가 박스</h3>
+                                    <p>자세히보기</p>
+                                </div>
+                            </a> 
+                        </div>
+                    </li>
+                    <li class="grid_child04 grid">
+                        <div>
+                            <img src="images/portfolio_hollys.png" alt="hollys">
+                            <a href="#" class="grid_hover_bg">
+                                <div class="box_line">
+                                    <h3>Hollys Coffee</h3>
+                                    <p>자세히보기</p>
+                                </div>
+                            </a> 
+                        </div>
+                    </li>
+                    <li class="grid_child05 grid">
+                        <div>
+                            <img src="images/portfolio_hollys.png" alt="hollys">
+                            <a href="#" class="grid_hover_bg">
+                                <div class="box_line">
+                                    <h3>기아 자동차</h3>
+                                    <p>자세히보기</p>
+                                </div>
+                            </a> 
+                        </div>
+                    </li>
+                </ul>  
+            </div>
         </div>
-      </div>
-    </section>
-    <footer>
-      <div class="content">
-        <address>
-          Copyright ⓒ Hong gil-dong 2020
-        </address>
-        <ul class="footer_sns">
-          <li>
-            <a href="#">
-              <svg class="github" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"></path>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <?xml version="1.0" encoding="utf-8"?>
-              <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-              <svg class="blog" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-              <!-- <style type="text/css">
-                .st0{fill:#FF0000;}
-              </style> -->
-              <g>
-                <g>
-                  <path class="st0" d="M53.48,63.59c-3.33,0-6.22,3.98-6.22,11.46c0,6.89,2.34,11.46,6.22,11.46c3.64,0,6.22-4.08,6.22-11.46
-                    S56.41,63.59,53.48,63.59z"/>
-                </g>
-                <g>
-                  <path class="st0" d="M40.84,90l-2.99,8.5c3.89,0.97,7.96,1.5,12.15,1.5c0.6,0,1.2-0.02,1.79-0.05
-                    C45.15,97.69,41.52,91.43,40.84,90z"/>
-                </g>
-                <g>
-                  <path class="st0" d="M50,0C22.39,0,0,22.39,0,50c0,20.8,12.71,38.63,30.78,46.17V42.72h-6.77c-0.44,0-0.71-0.39-0.71-0.97V29.61
-                    c0-1.26,0.24-1.84,0.63-1.84h22.74c0.32,0,0.52,0.49,0.52,0.97v28.64c0.63-1.26,4.48-8.83,11.57-8.83
-                    c8.36,0,19.17,8.54,19.17,26.8c0,9.7-2.55,15.88-6.22,19.72C88.44,86.98,100,69.84,100,50C100,22.39,77.61,0,50,0z"/>
-                </g>
-              </g>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <?xml version="1.0" encoding="utf-8"?>
-              <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-              <svg class="facebook" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                <g>
-                  <path class="st0" d="M50,0C22.39,0,0,22.39,0,50c0,21.83,13.99,40.38,33.49,47.2v-13.3c0-0.67,0.24-1.12,0.56-1.12h7.01V58h-7.01
-                    c-0.28,0-0.52-0.11-0.52-1.12V42.31c0-0.78,0.36-1.23,0.64-1.23h6.89v-5.72c0-8.97,3.01-19.39,7.61-19.39h14.67
-                    c1.6,0,5.65,1.01,5.65,10.76c0,8.97-4.77,9.86-6.05,9.86c-2,0-3.69-0.9-4.97-3.92c-0.24-0.78-0.84-1.57-1.2-1.57
-                    c-0.6,0-1.2,1.46-1.2,3.81c0,2.47,0.32,6.17,4.05,6.17h5.61c0.36,0,0.6,0.34,0.6,1.23v14.68c0,0.56-0.2,1.01-0.48,1.01h-7.41v24.77
-                    h7.41c0.32,0,0.52,0.45,0.52,1.57v13.07C85.7,90.78,100,72.06,100,50C100,22.39,77.61,0,50,0z"/>
-                </g>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  </div>
+        <div class="section tel" id="section3">
+            <div class="content">
+                <div class="tel_text">
+                    <h3>Thanks You</h3>
+                    <p>몰라 뭘적어야 할지 모르겠어</p>
+                </div>
+                <div class="dog">
+                    <div class="heart heart--1"></div>
+                    <div class="heart heart--2"></div>
+                    <div class="heart heart--3"></div>
+                    <div class="heart heart--4"></div>
+                    <div class="head">
+                        <div class="year year--left"></div>
+                        <div class="year year--right"></div>
+                        <div class="nose"></div>	
+                        <div class="face">
+                            <div class="eye eye--left"></div>
+                            <div class="eye eye--right"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="cheast"></div>
+                        <div class="back"></div>
+                        <div class="legs">
+                            <div class="legs__front legs__front--left"></div>
+                            <div class="legs__front legs__front--right"></div>
+                            <div class="legs__back legs__back--left"></div>
+                            <div class="legs__back legs__back--right"></div>
+                        </div>
+                        <div class="tail"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="end">
+                <div class="content">
+                    <div>
+                        <p>몰라 뭘적어야 할지 모르겠어</p>
+                    </div>
+                    <div>
+                        <div>
+                            <p>e-mail</p>
+                            <p>ghui3030@naver.com</p>
+                        </div>
+                        <div>
+                            <p>tel</p>
+                            <p>010-8339-1630</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>github</p>
+                        <a href="#">
+                            <img src="images/github.png" alt="github">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -21,4 +21,5 @@
     .header.active li>a:hover{color: #dd4132;}
 
     #close_nav_btn{display:block;float: right;}
+    .welcome h2{color: white;}
 }
