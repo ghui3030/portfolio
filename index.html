@@ -156,7 +156,7 @@
         .welcome p{color: #eee;text-align: center;text-shadow: 1px 1px 1px #333;font-size: 18px;line-height: 50px;}
 
         /* 나는 */
-        .about_me{display: flex;justify-content: space-around;}
+        .about_me{display: flex;justify-content: space-around;align-items: center;}
         .my_face{width: 200px;height: 200px;position: relative;}
         .my_face::before{position: absolute;right: -10px;top: -10px; box-sizing: border-box; content: '';display:block;width: 100%;height: 100%;border: 2px solid #333;}
         .my_face>img{width: 100%;height: 100%;}
@@ -171,10 +171,10 @@
         .progress::before{content:'';width: 0; display:block;height:100%;background-color:red;transition:0.3s;}
         
         .skill>li.active:nth-child(1) .progress::before{width:90%;transition-delay:1s;}
-        .skill>li.active:nth-child(2) .progress::before{width:90%;transition-delay:2s;}
-        .skill>li.active:nth-child(3) .progress::before{width:70%;transition-delay:3s;}
-        .skill>li.active:nth-child(4) .progress::before{width:90%;transition-delay:4s;}
-        .skill>li.active:nth-child(5) .progress::before{width:70%;transition-delay:5s;}
+        .skill>li.active:nth-child(2) .progress::before{width:90%;transition-delay:1.5s;}
+        .skill>li.active:nth-child(3) .progress::before{width:70%;transition-delay:2s;}
+        .skill>li.active:nth-child(4) .progress::before{width:90%;transition-delay:2.5s;}
+        .skill>li.active:nth-child(5) .progress::before{width:70%;transition-delay:3s;}
         .skill>li:hover::after{content:'';display:block;width:0;height:0;}
 
 
@@ -417,6 +417,7 @@
                         <div class="chest chest--left"></div>
                         <div class="chest chest--right"></div>
                         <div class="back"></div>
+                        <div class="foot"></div>
                         <div class="legs">
                             <div class="legs__front legs__front--left"></div>
                             <div class="legs__front legs__front--right"></div>
