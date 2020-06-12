@@ -143,9 +143,11 @@
     </script>
     <style>
         .welcome{background-image: url(images/welcome_bg.jpg);background-size: cover;}
-        .tel{background-color: orange;}
         .section{box-sizing: border-box;}
         .temp{font-size: 100px;text-align: center;}
+        .title{text-align: center;margin-bottom: 30px;}
+        .title h2{color: #dd4132;font-size: 55px;}
+        .title p{font-size: 13px;}
 
         
         /* welcome */
@@ -153,12 +155,14 @@
         .mouse_ani{height: 60px;position: relative;}
         .mouse_ani>img{height: 100%; position: absolute;left: 50%;transform: translateX(-50%);animation: mmove 2s infinite ease-in-out;}
         @keyframes mmove{0%{top:80px;}40%{top: 100px;}60%{top: 100px;}100%{top:80px;}}
-        .welcome p{color: #eee;text-align: center;text-shadow: 1px 1px 1px #333;font-size: 18px;line-height: 50px;}
+        .welcome p{background-color: rgba(0, 0, 0, 0.3); color: #eee;text-align: center;text-shadow: 1px 1px 1px #333;font-size: 18px;line-height: 50px;
+        width: 40%;border-radius: 10px; margin: 0 auto;}
 
         /* 나는 */
         .about_me{display: flex;justify-content: space-around;align-items: center;}
+        .about_me>li:last-child>p{line-height:40px;}
         .my_face{width: 200px;height: 200px;position: relative;}
-        .my_face::before{position: absolute;right: -10px;top: -10px; box-sizing: border-box; content: '';display:block;width: 100%;height: 100%;border: 2px solid #333;}
+        .my_face::before{position: absolute;right: -10px;top: -10px; box-sizing: border-box; content: '';display:block;width: 100%;height: 100%;border: 2px solid #dd4132;}
         .my_face>img{width: 100%;height: 100%;}
         .skill{display: flex;justify-content: center;align-items: flex-start;flex-flow: row nowrap;}
         .skill>li{width: 100%; text-align: center;display: flex;flex-flow: column nowrap;align-items: center;justify-content: center;}
@@ -168,7 +172,7 @@
         
         .progress{width: 90%; max-width:260px;height:20px;background-color:#cccccc;position: relative;margin: 15px 0;}
         .progress>span{position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#cccccc;font-weight:bold;}
-        .progress::before{content:'';width: 0; display:block;height:100%;background-color:red;transition:0.3s;}
+        .progress::before{content:'';width: 0; display:block;height:100%;background-color:#dd4132;transition:0.3s;}
         
         .skill>li.active:nth-child(1) .progress::before{width:90%;transition-delay:1s;}
         .skill>li.active:nth-child(2) .progress::before{width:90%;transition-delay:1.5s;}
@@ -177,11 +181,12 @@
         .skill>li.active:nth-child(5) .progress::before{width:70%;transition-delay:3s;}
         .skill>li:hover::after{content:'';display:block;width:0;height:0;}
 
+        
+
+
 
         /* 프로젝트 포트폴리오 */
-        .title{text-align: center;margin-bottom: 30px;}
-        .title h2{color: #dd4132;font-size: 55px;}
-        .title p{font-size: 13px;}
+        
         .portfolio .grid_par{display: grid;grid-template-columns: auto auto auto auto auto auto auto auto auto;grid-gap: 12px;}
         .grid_par>li>div{position: relative;height:300px;background-color:rgba(0, 0, 0, 0.1);cursor:pointer;display:flex;justify-content:center;align-items:center;}
         .grid_par li:nth-child(2)>div{height:100%;}
@@ -217,12 +222,37 @@
         /* 컨텍 */
         .tel_text{text-align: center;}
         .tel_text>h3{font-size: 90px;}
-        
 
-        .end{width: 100%;height: 150px;background-color: #dd4132;position: absolute; bottom: 0px;text-align: center;display: flex;align-items: center;}
-        .end>.content{display: flex;flex-flow:row nowrap;justify-content: space-between;}
-        .end>.content>div:nth-child(2){display: flex;}
-        .end>.content img{width: 50px;}
+        .end{width: 100%;height: 150px;background-color: #dd4132;position: absolute; bottom: 0px;display: flex;align-items: center;}
+        .end>.end_cont{position: relative;}
+        .end>.content>div{display: flex; flex-flow: column; align-items: flex-end;}
+        .end p{color: #eee;}
+
+        @media(max-width:767px){
+            .title h2{font-size: 36px;}
+            .title p{font-size: 11px;}
+
+            .welcome h2{font-size: 70px;}
+            .welcome p{font-size: 15px;}
+            .mouse_ani{height: 50px;}
+
+            .about_me>li:last-child>p{line-height:26px; font-size: 13px;}
+            .about_me h2{font-size: 18px;}
+            .my_face{width: 150px;height: 150px;}
+            .skill p{font-size: 13px;}
+            .skill span{font-size: 13px;}
+           
+            .grid_par>li>div{height:250px;}
+            .box_line{height: 224px;}
+            .grid_par li:nth-child(2) .box_line{height: 486px;}
+
+            .tel_text h3{font-size: 70px;}
+            .tel_text p{font-size: 15px;}
+
+            .end_cont p{font-size: 13px;}
+            .dog{top: -156%;}
+
+        }
     </style>
 </head>
 <body>
@@ -253,9 +283,7 @@
         <div class="section welcome" id="section0">
             <div class="content">
                 <h2 class="temp text">Welcome</h2>
-                <p>PORTFOLIO</p>
-                <p>웹 포트폴리오 사이트입니다. 방문해 주셔서 감사합니다.</p>
-                <p>몰라 귀찮아</p>
+                <p>웹 포트폴리오 사이트입니다.<br>방문해 주셔서 감사합니다.</p>
                 <div class="mouse_ani">
                     <img src="images/mouse.png" alt="mouse">
                 </div>
@@ -299,28 +327,28 @@
                         <div class="progress progress01">
                             <span>90%</span>
                         </div>
-                        <p>Animate와 transform을 활용하며 브라우저 크기에 대응하는 미디어쿼리 사용이 가능합니다.</p>
+                        <p>Animate와 transform을 활용하며 브라우저 크기에 대응하는 반응형 웹사이트를 구현 가능합니다.</p>
                     </li>
                     <li>
                         <img src="images/js.png" alt="js">
                         <div class="progress progress01">
                             <span>70%</span>
                         </div>
-                        <p>Jqurey plug-in 사용 및 직접 구현이 가능하고 javascript에 대한 이해도가 높습니다.</p>
+                        <p>Jqurey plug-in 사용 및 직접 구현이 가능합니다.</p>
                     </li>
                     <li>
                         <img src="images/ps.png" alt="ps">
                         <div class="progress progress01">
                             <span>90%</span>
                         </div>
-                        <p>합성, 사진 편집 등의 2D 그래픽 작업을 비롯한 다양한 웹 시안 작업이 가능합니다. </p>
+                        <p>합성, 사진 편집 등의 2D 그래픽 작업이 가능합니다. </p>
                     </li>
                     <li>
                         <img src="images/illu.png" alt="illu">
                         <div class="progress progress01">
                             <span>70%</span>
                         </div>
-                        <p>아이콘 제작 등 벡터 소스의 자유로운 제작과 편집이 가능합니다.</p>
+                        <p>아이콘 제작의 제작과 편집이 가능합니다.</p>
                     </li>
                 </ul>
             </div>
@@ -394,60 +422,46 @@
             <div class="content">
                 <div class="tel_text">
                     <h3>Thanks You</h3>
-                    <p>몰라 뭘적어야 할지 모르겠어</p>
-                </div>
-                <div class="dog">
-                    <div class="heart heart--1"></div>
-                    <div class="heart heart--2"></div>
-                    <div class="heart heart--3"></div>
-                    <div class="heart heart--4"></div>
-                    <div class="head">
-                        <div class="year year--left"></div>
-                        <div class="year year--right"></div>
-                        <div class="nose--back"></div>
-                        <div class="nose">
-                            <div class="mouth"></div>
-                        </div>	
-                        <div class="face">
-                            <div class="eye eye--left"></div>
-                            <div class="eye eye--right"></div>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <div class="chest chest--left"></div>
-                        <div class="chest chest--right"></div>
-                        <div class="back"></div>
-                        <div class="foot"></div>
-                        <div class="legs">
-                            <div class="legs__front legs__front--left"></div>
-                            <div class="legs__front legs__front--right"></div>
-                            <div class="legs__back legs__back--right"></div>
-                        </div>
-                        <div class="tail"></div>
-                    </div>
+                    <p>아직 부족한점이 많지만 열심히 만들었습니다.<br> 봐주셔서 감사합니다.</p>
                 </div>
             </div>
             <div class="end">
-                <div class="content">
-                    <div>
-                        <p>몰라 뭘적어야 할지 모르겠어</p>
-                    </div>
-                    <div>
-                        <div>
-                            <p>e-mail</p>
-                            <p>ghui3030@naver.com</p>
+                <div class="content end_cont">
+                    <div class="dog">
+                        <div class="heart heart--1"></div>
+                        <div class="heart heart--2"></div>
+                        <div class="heart heart--3"></div>
+                        <div class="heart heart--4"></div>
+                        <div class="head">
+                            <div class="year year--left"></div>
+                            <div class="year year--right"></div>
+                            <div class="nose--back"></div>
+                            <div class="nose">
+                                <div class="mouth"></div>
+                            </div>	
+                            <div class="face">
+                                <div class="eye eye--left"></div>
+                                <div class="eye eye--right"></div>
+                            </div>
                         </div>
-                        <div>
-                            <p>tel</p>
-                            <p>010-8339-1630</p>
+                        <div class="body">
+                            <div class="chest chest--left"></div>
+                            <div class="chest chest--right"></div>
+                            <div class="back"></div>
+                            <div class="foot"></div>
+                            <div class="legs">
+                                <div class="legs__front legs__front--left"></div>
+                                <div class="legs__front legs__front--right"></div>
+                                <div class="legs__back legs__back--right"></div>
+                            </div>
+                            <div class="tail"></div>
                         </div>
                     </div>
                     <div>
-                        <p>github</p>
-                        <a href="#">
-                            <img src="images/github.png" alt="github">
-                        </a>
-                    </div>
+                        <p>e-mail : ghui3030@naver.com</p>
+                        <p>github : github.com/ghui3030</p>
+                        <p>tel : 010-8339-1630</p>
+                    </div>             
                 </div>
             </div>
         </div>
